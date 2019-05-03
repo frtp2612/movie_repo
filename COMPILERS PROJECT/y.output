@@ -1,0 +1,1170 @@
+State 42 conflicts: 2 shift/reduce
+State 83 conflicts: 1 shift/reduce
+State 85 conflicts: 1 shift/reduce
+
+
+Grammar
+
+    0 $accept: line $end
+
+    1 line: declaration
+    2     | line declaration
+    3     | sentence
+    4     | line sentence
+
+    5 declaration: categ WORD ';'
+
+    6 categ: categ WORD ','
+    7      | VERB
+    8      | NOUN
+    9      | DET
+   10      | PREP
+   11      | ADJ
+   12      | ADV
+   13      | CONJ
+
+   14 punct: PUNC
+   15      | punc subor
+
+   16 subor: conj princ
+
+   17 sentence: princ
+   18         | PUNC
+
+   19 right: true2 right
+   20      | PUNC
+
+   21 true2: det
+   22      | noun
+   23      | adv
+   24      | adj
+   25      | verb
+   26      | conj
+   27      | prep
+   28      | punc
+   29      | WORD
+
+   30 princ: SN SV punct
+   31      | notSN right
+   32      | SN notSV right
+   33      | SN punct
+   34      | det SA punct
+   35      | det punct
+
+   36 SN: det SA noun
+   37   | SN SP
+   38   | noun
+   39   | det noun
+   40   | det SA notnoun right
+   41   | det notSAnoun right
+
+   42 notnoun: conj
+   43        | verb
+   44        | adj
+   45        | adv
+   46        | prep
+   47        | det
+   48        | WORD
+
+   49 notSAnoun: conj
+   50          | det
+   51          | verb
+   52          | prep
+   53          | WORD
+
+   54 notSN: conj
+   55      | adj
+   56      | adv
+   57      | verb
+   58      | prep
+   59      | WORD
+
+   60 SA: adj
+   61   | adv adj
+   62   | adv punct
+
+   63 SV: verb
+   64   | verb SN
+   65   | SV SP
+   66   | SV SA
+   67   | SV notSPSA right
+
+   68 notSPSA: conj
+   69        | verb
+   70        | det
+   71        | noun
+   72        | WORD
+
+   73 notSV: conj
+   74      | det
+   75      | noun
+   76      | adj
+   77      | adv
+   78      | WORD
+
+   79 SP: prep SN
+   80   | prep notSN right
+   81   | prep PUNC
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+',' (44) 6
+';' (59) 5
+error (256)
+WORD (500) 5 6 29 48 53 59 72 78
+verb (600) 25 43 51 57 63 64 69
+noun (601) 22 36 38 39 71 75
+adj (602) 24 44 55 60 61 76
+adv (603) 23 45 56 61 62 77
+prep (604) 27 46 52 58 79 80 81
+det (605) 21 34 35 36 39 40 41 47 50 70 74
+conj (606) 16 26 42 49 54 68 73
+NOUN (608) 8
+VERB (609) 7
+DET (610) 9
+ADJ (611) 11
+ADV (612) 12
+PREP (613) 10
+CONJ (614) 13
+PUNC (615) 14 18 20 81
+punc (616) 15 28
+
+
+Nonterminals, with rules where they appear
+
+$accept (22)
+    on left: 0
+line (23)
+    on left: 1 2 3 4, on right: 0 2 4
+declaration (24)
+    on left: 5, on right: 1 2
+categ (25)
+    on left: 6 7 8 9 10 11 12 13, on right: 5 6
+punct (26)
+    on left: 14 15, on right: 30 33 34 35 62
+subor (27)
+    on left: 16, on right: 15
+sentence (28)
+    on left: 17 18, on right: 3 4
+right (29)
+    on left: 19 20, on right: 19 31 32 40 41 67 80
+true2 (30)
+    on left: 21 22 23 24 25 26 27 28 29, on right: 19
+princ (31)
+    on left: 30 31 32 33 34 35, on right: 16 17
+SN (32)
+    on left: 36 37 38 39 40 41, on right: 30 32 33 37 64 79
+notnoun (33)
+    on left: 42 43 44 45 46 47 48, on right: 40
+notSAnoun (34)
+    on left: 49 50 51 52 53, on right: 41
+notSN (35)
+    on left: 54 55 56 57 58 59, on right: 31 80
+SA (36)
+    on left: 60 61 62, on right: 34 36 40 66
+SV (37)
+    on left: 63 64 65 66 67, on right: 30 65 66 67
+notSPSA (38)
+    on left: 68 69 70 71 72, on right: 67
+notSV (39)
+    on left: 73 74 75 76 77 78, on right: 32
+SP (40)
+    on left: 79 80 81, on right: 37 65
+
+
+State 0
+
+    0 $accept: . line $end
+
+    WORD  shift, and go to state 1
+    NOUN  shift, and go to state 2
+    VERB  shift, and go to state 3
+    DET   shift, and go to state 4
+    ADJ   shift, and go to state 5
+    ADV   shift, and go to state 6
+    PREP  shift, and go to state 7
+    CONJ  shift, and go to state 8
+    verb  shift, and go to state 9
+    noun  shift, and go to state 10
+    adj   shift, and go to state 11
+    adv   shift, and go to state 12
+    prep  shift, and go to state 13
+    det   shift, and go to state 14
+    conj  shift, and go to state 15
+    PUNC  shift, and go to state 16
+
+    line         go to state 17
+    declaration  go to state 18
+    categ        go to state 19
+    sentence     go to state 20
+    princ        go to state 21
+    SN           go to state 22
+    notSN        go to state 23
+
+
+State 1
+
+   59 notSN: WORD .
+
+    $default  reduce using rule 59 (notSN)
+
+
+State 2
+
+    8 categ: NOUN .
+
+    $default  reduce using rule 8 (categ)
+
+
+State 3
+
+    7 categ: VERB .
+
+    $default  reduce using rule 7 (categ)
+
+
+State 4
+
+    9 categ: DET .
+
+    $default  reduce using rule 9 (categ)
+
+
+State 5
+
+   11 categ: ADJ .
+
+    $default  reduce using rule 11 (categ)
+
+
+State 6
+
+   12 categ: ADV .
+
+    $default  reduce using rule 12 (categ)
+
+
+State 7
+
+   10 categ: PREP .
+
+    $default  reduce using rule 10 (categ)
+
+
+State 8
+
+   13 categ: CONJ .
+
+    $default  reduce using rule 13 (categ)
+
+
+State 9
+
+   57 notSN: verb .
+
+    $default  reduce using rule 57 (notSN)
+
+
+State 10
+
+   38 SN: noun .
+
+    $default  reduce using rule 38 (SN)
+
+
+State 11
+
+   55 notSN: adj .
+
+    $default  reduce using rule 55 (notSN)
+
+
+State 12
+
+   56 notSN: adv .
+
+    $default  reduce using rule 56 (notSN)
+
+
+State 13
+
+   58 notSN: prep .
+
+    $default  reduce using rule 58 (notSN)
+
+
+State 14
+
+   34 princ: det . SA punct
+   35      | det . punct
+   36 SN: det . SA noun
+   39   | det . noun
+   40   | det . SA notnoun right
+   41   | det . notSAnoun right
+
+    WORD  shift, and go to state 24
+    verb  shift, and go to state 25
+    noun  shift, and go to state 26
+    adj   shift, and go to state 27
+    adv   shift, and go to state 28
+    prep  shift, and go to state 29
+    det   shift, and go to state 30
+    conj  shift, and go to state 31
+    PUNC  shift, and go to state 32
+    punc  shift, and go to state 33
+
+    punct      go to state 34
+    notSAnoun  go to state 35
+    SA         go to state 36
+
+
+State 15
+
+   54 notSN: conj .
+
+    $default  reduce using rule 54 (notSN)
+
+
+State 16
+
+   18 sentence: PUNC .
+
+    $default  reduce using rule 18 (sentence)
+
+
+State 17
+
+    0 $accept: line . $end
+    2 line: line . declaration
+    4     | line . sentence
+
+    $end  shift, and go to state 37
+    WORD  shift, and go to state 1
+    NOUN  shift, and go to state 2
+    VERB  shift, and go to state 3
+    DET   shift, and go to state 4
+    ADJ   shift, and go to state 5
+    ADV   shift, and go to state 6
+    PREP  shift, and go to state 7
+    CONJ  shift, and go to state 8
+    verb  shift, and go to state 9
+    noun  shift, and go to state 10
+    adj   shift, and go to state 11
+    adv   shift, and go to state 12
+    prep  shift, and go to state 13
+    det   shift, and go to state 14
+    conj  shift, and go to state 15
+    PUNC  shift, and go to state 16
+
+    declaration  go to state 38
+    categ        go to state 19
+    sentence     go to state 39
+    princ        go to state 21
+    SN           go to state 22
+    notSN        go to state 23
+
+
+State 18
+
+    1 line: declaration .
+
+    $default  reduce using rule 1 (line)
+
+
+State 19
+
+    5 declaration: categ . WORD ';'
+    6 categ: categ . WORD ','
+
+    WORD  shift, and go to state 40
+
+
+State 20
+
+    3 line: sentence .
+
+    $default  reduce using rule 3 (line)
+
+
+State 21
+
+   17 sentence: princ .
+
+    $default  reduce using rule 17 (sentence)
+
+
+State 22
+
+   30 princ: SN . SV punct
+   32      | SN . notSV right
+   33      | SN . punct
+   37 SN: SN . SP
+
+    WORD  shift, and go to state 41
+    verb  shift, and go to state 42
+    noun  shift, and go to state 43
+    adj   shift, and go to state 44
+    adv   shift, and go to state 45
+    prep  shift, and go to state 46
+    det   shift, and go to state 47
+    conj  shift, and go to state 48
+    PUNC  shift, and go to state 32
+    punc  shift, and go to state 33
+
+    punct  go to state 49
+    SV     go to state 50
+    notSV  go to state 51
+    SP     go to state 52
+
+
+State 23
+
+   31 princ: notSN . right
+
+    WORD  shift, and go to state 53
+    verb  shift, and go to state 54
+    noun  shift, and go to state 55
+    adj   shift, and go to state 56
+    adv   shift, and go to state 57
+    prep  shift, and go to state 58
+    det   shift, and go to state 59
+    conj  shift, and go to state 60
+    PUNC  shift, and go to state 61
+    punc  shift, and go to state 62
+
+    right  go to state 63
+    true2  go to state 64
+
+
+State 24
+
+   53 notSAnoun: WORD .
+
+    $default  reduce using rule 53 (notSAnoun)
+
+
+State 25
+
+   51 notSAnoun: verb .
+
+    $default  reduce using rule 51 (notSAnoun)
+
+
+State 26
+
+   39 SN: det noun .
+
+    $default  reduce using rule 39 (SN)
+
+
+State 27
+
+   60 SA: adj .
+
+    $default  reduce using rule 60 (SA)
+
+
+State 28
+
+   61 SA: adv . adj
+   62   | adv . punct
+
+    adj   shift, and go to state 65
+    PUNC  shift, and go to state 32
+    punc  shift, and go to state 33
+
+    punct  go to state 66
+
+
+State 29
+
+   52 notSAnoun: prep .
+
+    $default  reduce using rule 52 (notSAnoun)
+
+
+State 30
+
+   50 notSAnoun: det .
+
+    $default  reduce using rule 50 (notSAnoun)
+
+
+State 31
+
+   49 notSAnoun: conj .
+
+    $default  reduce using rule 49 (notSAnoun)
+
+
+State 32
+
+   14 punct: PUNC .
+
+    $default  reduce using rule 14 (punct)
+
+
+State 33
+
+   15 punct: punc . subor
+
+    conj  shift, and go to state 67
+
+    subor  go to state 68
+
+
+State 34
+
+   35 princ: det punct .
+
+    $default  reduce using rule 35 (princ)
+
+
+State 35
+
+   41 SN: det notSAnoun . right
+
+    WORD  shift, and go to state 53
+    verb  shift, and go to state 54
+    noun  shift, and go to state 55
+    adj   shift, and go to state 56
+    adv   shift, and go to state 57
+    prep  shift, and go to state 58
+    det   shift, and go to state 59
+    conj  shift, and go to state 60
+    PUNC  shift, and go to state 61
+    punc  shift, and go to state 62
+
+    right  go to state 69
+    true2  go to state 64
+
+
+State 36
+
+   34 princ: det SA . punct
+   36 SN: det SA . noun
+   40   | det SA . notnoun right
+
+    WORD  shift, and go to state 70
+    verb  shift, and go to state 71
+    noun  shift, and go to state 72
+    adj   shift, and go to state 73
+    adv   shift, and go to state 74
+    prep  shift, and go to state 75
+    det   shift, and go to state 76
+    conj  shift, and go to state 77
+    PUNC  shift, and go to state 32
+    punc  shift, and go to state 33
+
+    punct    go to state 78
+    notnoun  go to state 79
+
+
+State 37
+
+    0 $accept: line $end .
+
+    $default  accept
+
+
+State 38
+
+    2 line: line declaration .
+
+    $default  reduce using rule 2 (line)
+
+
+State 39
+
+    4 line: line sentence .
+
+    $default  reduce using rule 4 (line)
+
+
+State 40
+
+    5 declaration: categ WORD . ';'
+    6 categ: categ WORD . ','
+
+    ','  shift, and go to state 80
+    ';'  shift, and go to state 81
+
+
+State 41
+
+   78 notSV: WORD .
+
+    $default  reduce using rule 78 (notSV)
+
+
+State 42
+
+   63 SV: verb .
+   64   | verb . SN
+
+    noun  shift, and go to state 10
+    det   shift, and go to state 82
+
+    noun      [reduce using rule 63 (SV)]
+    det       [reduce using rule 63 (SV)]
+    $default  reduce using rule 63 (SV)
+
+    SN  go to state 83
+
+
+State 43
+
+   75 notSV: noun .
+
+    $default  reduce using rule 75 (notSV)
+
+
+State 44
+
+   76 notSV: adj .
+
+    $default  reduce using rule 76 (notSV)
+
+
+State 45
+
+   77 notSV: adv .
+
+    $default  reduce using rule 77 (notSV)
+
+
+State 46
+
+   79 SP: prep . SN
+   80   | prep . notSN right
+   81   | prep . PUNC
+
+    WORD  shift, and go to state 1
+    verb  shift, and go to state 9
+    noun  shift, and go to state 10
+    adj   shift, and go to state 11
+    adv   shift, and go to state 12
+    prep  shift, and go to state 13
+    det   shift, and go to state 82
+    conj  shift, and go to state 15
+    PUNC  shift, and go to state 84
+
+    SN     go to state 85
+    notSN  go to state 86
+
+
+State 47
+
+   74 notSV: det .
+
+    $default  reduce using rule 74 (notSV)
+
+
+State 48
+
+   73 notSV: conj .
+
+    $default  reduce using rule 73 (notSV)
+
+
+State 49
+
+   33 princ: SN punct .
+
+    $default  reduce using rule 33 (princ)
+
+
+State 50
+
+   30 princ: SN SV . punct
+   65 SV: SV . SP
+   66   | SV . SA
+   67   | SV . notSPSA right
+
+    WORD  shift, and go to state 87
+    verb  shift, and go to state 88
+    noun  shift, and go to state 89
+    adj   shift, and go to state 27
+    adv   shift, and go to state 28
+    prep  shift, and go to state 46
+    det   shift, and go to state 90
+    conj  shift, and go to state 91
+    PUNC  shift, and go to state 32
+    punc  shift, and go to state 33
+
+    punct    go to state 92
+    SA       go to state 93
+    notSPSA  go to state 94
+    SP       go to state 95
+
+
+State 51
+
+   32 princ: SN notSV . right
+
+    WORD  shift, and go to state 53
+    verb  shift, and go to state 54
+    noun  shift, and go to state 55
+    adj   shift, and go to state 56
+    adv   shift, and go to state 57
+    prep  shift, and go to state 58
+    det   shift, and go to state 59
+    conj  shift, and go to state 60
+    PUNC  shift, and go to state 61
+    punc  shift, and go to state 62
+
+    right  go to state 96
+    true2  go to state 64
+
+
+State 52
+
+   37 SN: SN SP .
+
+    $default  reduce using rule 37 (SN)
+
+
+State 53
+
+   29 true2: WORD .
+
+    $default  reduce using rule 29 (true2)
+
+
+State 54
+
+   25 true2: verb .
+
+    $default  reduce using rule 25 (true2)
+
+
+State 55
+
+   22 true2: noun .
+
+    $default  reduce using rule 22 (true2)
+
+
+State 56
+
+   24 true2: adj .
+
+    $default  reduce using rule 24 (true2)
+
+
+State 57
+
+   23 true2: adv .
+
+    $default  reduce using rule 23 (true2)
+
+
+State 58
+
+   27 true2: prep .
+
+    $default  reduce using rule 27 (true2)
+
+
+State 59
+
+   21 true2: det .
+
+    $default  reduce using rule 21 (true2)
+
+
+State 60
+
+   26 true2: conj .
+
+    $default  reduce using rule 26 (true2)
+
+
+State 61
+
+   20 right: PUNC .
+
+    $default  reduce using rule 20 (right)
+
+
+State 62
+
+   28 true2: punc .
+
+    $default  reduce using rule 28 (true2)
+
+
+State 63
+
+   31 princ: notSN right .
+
+    $default  reduce using rule 31 (princ)
+
+
+State 64
+
+   19 right: true2 . right
+
+    WORD  shift, and go to state 53
+    verb  shift, and go to state 54
+    noun  shift, and go to state 55
+    adj   shift, and go to state 56
+    adv   shift, and go to state 57
+    prep  shift, and go to state 58
+    det   shift, and go to state 59
+    conj  shift, and go to state 60
+    PUNC  shift, and go to state 61
+    punc  shift, and go to state 62
+
+    right  go to state 97
+    true2  go to state 64
+
+
+State 65
+
+   61 SA: adv adj .
+
+    $default  reduce using rule 61 (SA)
+
+
+State 66
+
+   62 SA: adv punct .
+
+    $default  reduce using rule 62 (SA)
+
+
+State 67
+
+   16 subor: conj . princ
+
+    WORD  shift, and go to state 1
+    verb  shift, and go to state 9
+    noun  shift, and go to state 10
+    adj   shift, and go to state 11
+    adv   shift, and go to state 12
+    prep  shift, and go to state 13
+    det   shift, and go to state 14
+    conj  shift, and go to state 15
+
+    princ  go to state 98
+    SN     go to state 22
+    notSN  go to state 23
+
+
+State 68
+
+   15 punct: punc subor .
+
+    $default  reduce using rule 15 (punct)
+
+
+State 69
+
+   41 SN: det notSAnoun right .
+
+    $default  reduce using rule 41 (SN)
+
+
+State 70
+
+   48 notnoun: WORD .
+
+    $default  reduce using rule 48 (notnoun)
+
+
+State 71
+
+   43 notnoun: verb .
+
+    $default  reduce using rule 43 (notnoun)
+
+
+State 72
+
+   36 SN: det SA noun .
+
+    $default  reduce using rule 36 (SN)
+
+
+State 73
+
+   44 notnoun: adj .
+
+    $default  reduce using rule 44 (notnoun)
+
+
+State 74
+
+   45 notnoun: adv .
+
+    $default  reduce using rule 45 (notnoun)
+
+
+State 75
+
+   46 notnoun: prep .
+
+    $default  reduce using rule 46 (notnoun)
+
+
+State 76
+
+   47 notnoun: det .
+
+    $default  reduce using rule 47 (notnoun)
+
+
+State 77
+
+   42 notnoun: conj .
+
+    $default  reduce using rule 42 (notnoun)
+
+
+State 78
+
+   34 princ: det SA punct .
+
+    $default  reduce using rule 34 (princ)
+
+
+State 79
+
+   40 SN: det SA notnoun . right
+
+    WORD  shift, and go to state 53
+    verb  shift, and go to state 54
+    noun  shift, and go to state 55
+    adj   shift, and go to state 56
+    adv   shift, and go to state 57
+    prep  shift, and go to state 58
+    det   shift, and go to state 59
+    conj  shift, and go to state 60
+    PUNC  shift, and go to state 61
+    punc  shift, and go to state 62
+
+    right  go to state 99
+    true2  go to state 64
+
+
+State 80
+
+    6 categ: categ WORD ',' .
+
+    $default  reduce using rule 6 (categ)
+
+
+State 81
+
+    5 declaration: categ WORD ';' .
+
+    $default  reduce using rule 5 (declaration)
+
+
+State 82
+
+   36 SN: det . SA noun
+   39   | det . noun
+   40   | det . SA notnoun right
+   41   | det . notSAnoun right
+
+    WORD  shift, and go to state 24
+    verb  shift, and go to state 25
+    noun  shift, and go to state 26
+    adj   shift, and go to state 27
+    adv   shift, and go to state 28
+    prep  shift, and go to state 29
+    det   shift, and go to state 30
+    conj  shift, and go to state 31
+
+    notSAnoun  go to state 35
+    SA         go to state 100
+
+
+State 83
+
+   37 SN: SN . SP
+   64 SV: verb SN .
+
+    prep  shift, and go to state 46
+
+    prep      [reduce using rule 64 (SV)]
+    $default  reduce using rule 64 (SV)
+
+    SP  go to state 52
+
+
+State 84
+
+   81 SP: prep PUNC .
+
+    $default  reduce using rule 81 (SP)
+
+
+State 85
+
+   37 SN: SN . SP
+   79 SP: prep SN .
+
+    prep  shift, and go to state 46
+
+    prep      [reduce using rule 79 (SP)]
+    $default  reduce using rule 79 (SP)
+
+    SP  go to state 52
+
+
+State 86
+
+   80 SP: prep notSN . right
+
+    WORD  shift, and go to state 53
+    verb  shift, and go to state 54
+    noun  shift, and go to state 55
+    adj   shift, and go to state 56
+    adv   shift, and go to state 57
+    prep  shift, and go to state 58
+    det   shift, and go to state 59
+    conj  shift, and go to state 60
+    PUNC  shift, and go to state 61
+    punc  shift, and go to state 62
+
+    right  go to state 101
+    true2  go to state 64
+
+
+State 87
+
+   72 notSPSA: WORD .
+
+    $default  reduce using rule 72 (notSPSA)
+
+
+State 88
+
+   69 notSPSA: verb .
+
+    $default  reduce using rule 69 (notSPSA)
+
+
+State 89
+
+   71 notSPSA: noun .
+
+    $default  reduce using rule 71 (notSPSA)
+
+
+State 90
+
+   70 notSPSA: det .
+
+    $default  reduce using rule 70 (notSPSA)
+
+
+State 91
+
+   68 notSPSA: conj .
+
+    $default  reduce using rule 68 (notSPSA)
+
+
+State 92
+
+   30 princ: SN SV punct .
+
+    $default  reduce using rule 30 (princ)
+
+
+State 93
+
+   66 SV: SV SA .
+
+    $default  reduce using rule 66 (SV)
+
+
+State 94
+
+   67 SV: SV notSPSA . right
+
+    WORD  shift, and go to state 53
+    verb  shift, and go to state 54
+    noun  shift, and go to state 55
+    adj   shift, and go to state 56
+    adv   shift, and go to state 57
+    prep  shift, and go to state 58
+    det   shift, and go to state 59
+    conj  shift, and go to state 60
+    PUNC  shift, and go to state 61
+    punc  shift, and go to state 62
+
+    right  go to state 102
+    true2  go to state 64
+
+
+State 95
+
+   65 SV: SV SP .
+
+    $default  reduce using rule 65 (SV)
+
+
+State 96
+
+   32 princ: SN notSV right .
+
+    $default  reduce using rule 32 (princ)
+
+
+State 97
+
+   19 right: true2 right .
+
+    $default  reduce using rule 19 (right)
+
+
+State 98
+
+   16 subor: conj princ .
+
+    $default  reduce using rule 16 (subor)
+
+
+State 99
+
+   40 SN: det SA notnoun right .
+
+    $default  reduce using rule 40 (SN)
+
+
+State 100
+
+   36 SN: det SA . noun
+   40   | det SA . notnoun right
+
+    WORD  shift, and go to state 70
+    verb  shift, and go to state 71
+    noun  shift, and go to state 72
+    adj   shift, and go to state 73
+    adv   shift, and go to state 74
+    prep  shift, and go to state 75
+    det   shift, and go to state 76
+    conj  shift, and go to state 77
+
+    notnoun  go to state 79
+
+
+State 101
+
+   80 SP: prep notSN right .
+
+    $default  reduce using rule 80 (SP)
+
+
+State 102
+
+   67 SV: SV notSPSA right .
+
+    $default  reduce using rule 67 (SV)
